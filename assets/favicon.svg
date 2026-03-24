@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" aria-label="Armidillo shield logo">
+  <!-- Shield background -->
+  <path d="M16 2L4 7v9c0 7.18 5.15 13.9 12 15.47C22.85 29.9 28 23.18 28 16V7L16 2z" fill="#0d1b3e"/>
+  <!-- Shield border with orange accent -->
+  <path d="M16 3.2L5 7.87V16c0 6.72 4.82 13.02 11 14.55C23.18 29.02 28 22.72 28 16V7.87L16 3.2z" fill="none" stroke="#f97316" stroke-width="1.5"/>
+  <!-- Letter A mark (stylized armadillo) -->
+  <text x="16" y="21" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f97316" text-anchor="middle" letter-spacing="-0.5">A</text>
+</svg>

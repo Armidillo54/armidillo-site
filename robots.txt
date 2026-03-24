@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /content-strategy
+
+Sitemap: https://www.armidillo.com/sitemap.xml

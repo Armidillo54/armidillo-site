@@ -1,0 +1,13 @@
+# Armidillo — Cloudflare Pages Redirects
+# Format: /old-path  /new-path  status-code
+
+# 301: Old URL → New URL (SEO-safe)
+/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2026  301
+
+# /contact → /subscribe
+/contact  /subscribe  301
+
+# HTTP → HTTPS and apex → www (handled by Cloudflare DNS/SSL, but listed for clarity)
+http://armidillo.com/*  https://www.armidillo.com/:splat  301
+http://www.armidillo.com/*  https://www.armidillo.com/:splat  301
+https://armidillo.com/*  https://www.armidillo.com/:splat  301
