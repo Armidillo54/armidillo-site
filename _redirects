@@ -15,3 +15,9 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 # Legacy slug
 /senior-security-hub/best-identity-protection-2025  /pages/senior-security-hub/best-identity-protection-2026.html  301
 /contact  /pages/about.html  301
+
+# SEO clean URLs
+/i-got-scammed  /pages/i-got-scammed.html  200
+/got-scammed  /pages/i-got-scammed.html  301
+/i-just-got-scammed  /pages/i-got-scammed.html  301
+/just-got-scammed  /pages/i-got-scammed.html  301
