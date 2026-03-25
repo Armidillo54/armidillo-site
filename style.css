@@ -241,7 +241,7 @@
 .nav-links .dropdown-menu {
   display: none;
   position: absolute;
-  top: calc(100% + var(--space-2));
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-surface);
@@ -250,6 +250,7 @@
   box-shadow: var(--shadow-lg);
   min-width: 200px;
   padding: var(--space-2);
+  padding-top: calc(var(--space-2) + var(--space-2));
   z-index: 200;
 }
 .nav-links .dropdown:hover .dropdown-menu,
@@ -1591,4 +1592,20 @@ html, body {
   color: #293241;
   margin: 0;
   line-height: 1.65;
+}
+
+/* Buttons inside article-body must preserve their own text color */
+.article-body a.btn { color: #fff !important; }
+.article-body a.btn:hover { color: #fff !important; }
+.article-body a.btn-outline { color: var(--color-primary) !important; }
+.article-body a.btn-outline:hover { color: var(--color-primary) !important; }
+
+/* Nav dropdown bridge — fills gap between trigger and menu so hover isn't lost */
+.nav-links .dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
 }
