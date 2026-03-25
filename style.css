@@ -422,11 +422,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
+  padding: 20px; /* prevent orbit icons from being clipped by hero overflow:hidden */
 }
 
 .shield-graphic {
   width: min(360px, 100%);
   height: auto;
+  overflow: visible;
 }
 
 /* Hero stats */
@@ -912,7 +915,13 @@ section { padding-block: clamp(var(--space-12), 8vw, var(--space-20)); }
   color: var(--color-text-muted);
   padding-block: var(--space-4);
   flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  counter-reset: none;
 }
+.breadcrumb li { display: flex; align-items: center; gap: var(--space-2); }
+.breadcrumb li::before { display: none; }
 .breadcrumb a { color: var(--color-text-muted); text-decoration: none; }
 .breadcrumb a:hover { color: #f97316; }
 .breadcrumb span { opacity: 0.5; }
@@ -1298,8 +1307,12 @@ section { padding-block: clamp(var(--space-12), 8vw, var(--space-20)); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  .hero-visual { display: flex; }
+  #hero-canvas-wrap { height: clamp(200px, 50vw, 320px); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  #hero-canvas-wrap { height: 240px; }
 }
 @media (max-width: 600px) {
   .footer-grid { grid-template-columns: 1fr; }
@@ -1486,4 +1499,67 @@ html, body {
   background: #0d1b3e;
   color: #fff;
   border-color: #0d1b3e;
+}
+
+/* ─── JUST GOT SCAMMED CTA ─── */
+.scam-cta-section {
+  background: linear-gradient(135deg, #1a0a00 0%, #2d1200 100%);
+  border-top: 2px solid rgba(249,115,22,0.4);
+  padding-block: var(--space-8);
+}
+.scam-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+.scam-cta-left {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex: 1;
+  min-width: 260px;
+}
+.scam-cta-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: #f97316;
+  padding: 8px;
+  background: rgba(249,115,22,0.15);
+  border-radius: 10px;
+  border: 1px solid rgba(249,115,22,0.3);
+}
+.scam-cta-icon svg { width: 100%; height: 100%; display: block; }
+.scam-cta-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 0.25rem 0;
+}
+.scam-cta-sub {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+  max-width: 55ch;
+}
+.scam-cta-btn {
+  background: #f97316;
+  color: #fff;
+  font-weight: 800;
+  font-size: var(--text-sm);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.scam-cta-btn:hover { background: #ea6c0a; transform: translateY(-1px); }
+@media (max-width: 640px) {
+  .scam-cta-inner { flex-direction: column; }
+  .scam-cta-btn { width: 100%; text-align: center; }
 }
