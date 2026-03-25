@@ -23,6 +23,51 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"Armidillo","url":"https://www.armidillo.com","description":"Fraud prevention, scam education, and identity protection resources."}
 </script>
+
+<style>
+/* Hero shield animation */
+@keyframes shield-pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(249,115,22,0.3)); }
+  50% { filter: drop-shadow(0 0 20px rgba(249,115,22,0.6)); }
+}
+@keyframes orbit-1 {
+  0% { transform: translate(265px, 120px) rotate(0deg) translate(-265px, -120px) translate(265px, 120px); }
+  100% { transform: translate(265px, 120px) rotate(360deg) translate(-265px, -120px) translate(265px, 120px); }
+}
+.shield-graphic {
+  animation: shield-pulse 3s ease-in-out infinite;
+}
+.shield-graphic .shield-path {
+  transform-origin: 170px 170px;
+  animation: shield-float 4s ease-in-out infinite;
+}
+@keyframes shield-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+/* Orbit group animations */
+.orbit-icon-1 { transform-origin: 170px 170px; animation: orbit-cw 12s linear infinite; }
+.orbit-icon-2 { transform-origin: 170px 170px; animation: orbit-cw 18s linear infinite reverse; }
+.orbit-icon-3 { transform-origin: 170px 170px; animation: orbit-cw 15s linear infinite; animation-delay: -5s; }
+.orbit-icon-4 { transform-origin: 170px 170px; animation: orbit-cw 10s linear infinite reverse; animation-delay: -3s; }
+.orbit-icon-5 { transform-origin: 170px 170px; animation: orbit-cw 20s linear infinite; animation-delay: -8s; }
+@keyframes orbit-cw {
+  from { transform: rotate(0deg) translateX(0) translateY(0); }
+  to { transform: rotate(360deg) translateX(0) translateY(0); }
+}
+/* Gentle float for whole shield graphic */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual svg {
+    animation: hero-float 5s ease-in-out infinite;
+  }
+  @keyframes hero-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+}
+/* Card icon SVG override */
+.card-icon-svg svg { display: block; }
+</style>
 </head>
 <body>
 <a href="#main" class="sr-only">Skip to main content</a>
@@ -34,7 +79,7 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="hero-badge">🛡️ Trusted Fraud Prevention Resource</div>
+        <div class="hero-badge"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;color:currentColor"><path d="M10 2L3 5v5c0 4.418 3.13 8.552 7 9.5C13.87 18.552 17 14.418 17 10V5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Trusted Fraud Prevention Resource</div>
         <h1>Learn to Protect Yourself from <span class="accent">Online Fraud</span></h1>
         <p class="hero-desc">Empowering you with knowledge and practical tools to navigate the digital world safely — ensuring peace of mind for every generation.</p>
         <ul class="hero-bullets">
@@ -43,7 +88,7 @@
           <li>Find easy-to-use tools recommended by security experts</li>
         </ul>
         <div class="hero-actions">
-        <a href="pages/i-got-scammed.html" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);font-weight:700">🚨 Just Got Scammed? Act Now →</a>
+        <a href="pages/i-got-scammed.html" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);font-weight:700">Just Got Scammed? Act Now →</a>
           <a href="pages/learning-center/index.html" class="btn btn-primary btn-lg">Explore Free Guides</a>
           <a href="pages/senior-security-hub/index.html" class="btn btn-outline btn-lg">Visit Senior Hub</a>
         </div>
@@ -63,11 +108,11 @@
           <path d="M148 168 L162 182 L194 152" stroke="#f97316" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="170" cy="140" r="14" fill="#f97316" opacity="0.7"/>
           <!-- Orbiting icons -->
-          <g transform="translate(265, 120)"><rect width="36" height="36" rx="8" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.3)" stroke-width="1"/><text x="18" y="24" text-anchor="middle" font-size="18">🔒</text></g>
-          <g transform="translate(40, 110)"><rect width="36" height="36" rx="8" fill="rgba(90,120,212,0.15)" stroke="rgba(90,120,212,0.3)" stroke-width="1"/><text x="18" y="24" text-anchor="middle" font-size="18">🔍</text></g>
-          <g transform="translate(260, 210)"><rect width="36" height="36" rx="8" fill="rgba(74,222,128,0.15)" stroke="rgba(74,222,128,0.3)" stroke-width="1"/><text x="18" y="24" text-anchor="middle" font-size="18">✅</text></g>
-          <g transform="translate(44, 210)"><rect width="36" height="36" rx="8" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.3)" stroke-width="1"/><text x="18" y="24" text-anchor="middle" font-size="18">🛡️</text></g>
-          <g transform="translate(152, 280)"><rect width="36" height="36" rx="8" fill="rgba(90,120,212,0.15)" stroke="rgba(90,120,212,0.3)" stroke-width="1"/><text x="18" y="24" text-anchor="middle" font-size="18">👁️</text></g>
+          <g class="orbit-icon-1" transform="translate(265, 120)"><rect width="36" height="36" rx="8" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.3)" stroke-width="1"/><svg x="9" y="9" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(249,115,22,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></g>
+          <g class="orbit-icon-2" transform="translate(40, 110)"><rect width="36" height="36" rx="8" fill="rgba(90,120,212,0.15)" stroke="rgba(90,120,212,0.3)" stroke-width="1"/><svg x="9" y="9" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(147,181,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></g>
+          <g class="orbit-icon-3" transform="translate(260, 210)"><rect width="36" height="36" rx="8" fill="rgba(74,222,128,0.15)" stroke="rgba(74,222,128,0.3)" stroke-width="1"/><svg x="9" y="9" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></g>
+          <g class="orbit-icon-4" transform="translate(44, 210)"><rect width="36" height="36" rx="8" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.3)" stroke-width="1"/><svg x="9" y="9" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(249,115,22,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></g>
+          <g class="orbit-icon-5" transform="translate(152, 280)"><rect width="36" height="36" rx="8" fill="rgba(90,120,212,0.15)" stroke="rgba(90,120,212,0.3)" stroke-width="1"/><svg x="9" y="9" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(147,181,255,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></g>
         </svg>
       </div>
     </div>
@@ -79,18 +124,18 @@
   <div class="container container--narrow">
     <div class="aura-block">
       <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
-        <span style="font-size:2rem">🛡️</span>
+        <span style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(249,115,22,0.15);border-radius:8px;border:1px solid rgba(249,115,22,0.3)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
         <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fdba74">Our #1 Pick for Total Digital Protection</span>
       </div>
       <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;margin-bottom:0.5rem">Protect Your Identity Now — Starting at $12/Month</h2>
       <p style="color:rgba(255,255,255,0.75);margin-bottom:0.75rem">Stop scammers in their tracks with Aura's all-in-one identity theft, fraud, and online privacy protection. Over 2 million seniors protected.</p>
       <div class="aura-badges">
-        <span class="aura-badge">⭐ Rated #1 Identity Theft Protection 2026</span>
+        <span class="aura-badge" style="display:inline-flex;align-items:center;gap:0.3rem"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Rated #1 Identity Theft Protection 2026</span>
         <span class="aura-badge">$1M Insurance Coverage</span>
         <span class="aura-badge">3-Bureau Credit Monitoring</span>
         <span class="aura-badge">14-Day Free Trial</span>
       </div>
-      <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.75rem">⚠️ Affiliate Disclosure — We may earn a commission at no extra cost to you if you click this link and subscribe. <a href="pages/affiliate-disclosure.html" style="color:#fdba74;text-decoration:underline">See full disclosure.</a></p>
+      <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.75rem"><span style="display:inline-flex;align-items:center;gap:0.3rem;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fdba74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Affiliate Disclosure</span> — We may earn a commission at no extra cost to you if you click this link and subscribe. <a href="pages/affiliate-disclosure.html" style="color:#fdba74;text-decoration:underline">See full disclosure.</a></p>
       <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg">SAVE 63% — GET AURA NOW</a>
     </div>
   </div>
@@ -106,25 +151,25 @@
     </div>
     <div class="card-grid">
       <div class="card">
-        <div class="card-icon">🔑</div>
+        <div class="card-icon-svg" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(147,197,253,0.12);border:1px solid rgba(147,197,253,0.2);margin-bottom:1rem;flex-shrink:0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
         <h3>Secure My Accounts</h3>
         <p>Worried about weak passwords or data breaches? A password manager is your first line of defense.</p>
         <a href="pages/resources/essential-tools.html" class="card-link">See Password Managers →</a>
       </div>
       <div class="card">
-        <div class="card-icon">₿</div>
+        <div class="card-icon-svg" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.2);margin-bottom:1rem;flex-shrink:0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 5.4m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></svg></div>
         <h3>Safeguard My Crypto</h3>
         <p>Getting into crypto? Avoid costly mistakes and scams. Note: 2024 saw $5.6B lost to crypto scams.</p>
         <a href="pages/resources/crypto-safety.html" class="card-link">SECURE MY CRYPTO NOW →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🪪</div>
+        <div class="card-icon"><span style="display:inline-block;width:18px;height:18px;vertical-align:middle;color:var(--color-primary)" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="7" cy="10" r="2" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="11" y1="11" x2="14" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></div>
         <h3>Protect My Identity</h3>
         <p>Concerned about identity theft? Proactive monitoring can alert you to fraud before it escalates.</p>
         <a href="pages/learning-center/aura-identity-theft-protection-review.html" class="card-link">Read Aura Review →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🌐</div>
+        <div class="card-icon-svg" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:rgba(147,197,253,0.12);border:1px solid rgba(147,197,253,0.2);margin-bottom:1rem;flex-shrink:0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
         <h3>Secure My Connection</h3>
         <p>Worried about hackers on public Wi-Fi or want to keep your trading private? A premium VPN ensures your privacy.</p>
         <a href="https://nordvpn.com" target="_blank" rel="noopener sponsored" class="card-link">Get NordVPN Protection →</a>
@@ -148,7 +193,31 @@
         </ul>
         <a href="pages/senior-security-hub/index.html" class="btn btn-primary btn-lg">PROTECT YOUR FAMILY NOW</a>
       </div>
-      <div aria-hidden="true" style="text-align:center;font-size:8rem;opacity:0.3">👴</div>
+      <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center">
+  <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:clamp(140px,18vw,200px);opacity:0.85" aria-hidden="true">
+    <!-- Shield background circle -->
+    <circle cx="100" cy="100" r="90" fill="rgba(255,255,255,0.04)" stroke="rgba(249,115,22,0.2)" stroke-width="1"/>
+    <!-- Person silhouette (senior) -->
+    <circle cx="100" cy="70" r="28" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <!-- Head hair accent (gray) -->
+    <path d="M72 70 C72 48 128 48 128 70" fill="rgba(200,200,220,0.2)" stroke="rgba(200,200,220,0.4)" stroke-width="1"/>
+    <!-- Body/shoulders -->
+    <path d="M55 165 C55 135 72 120 100 120 C128 120 145 135 145 165" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <!-- Shield badge overlay -->
+    <path d="M100 145 L80 155 L80 175 C80 188 88 197 100 200 C112 197 120 188 120 175 L120 155 Z" fill="rgba(249,115,22,0.15)" stroke="rgba(249,115,22,0.5)" stroke-width="1.5"/>
+    <!-- Check on shield -->
+    <polyline points="91,172 97,178 110,164" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Trust rings -->
+    <circle cx="100" cy="100" r="75" fill="none" stroke="rgba(249,115,22,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
+    <!-- Stars (trust signal) -->
+    <text x="28" y="50" font-size="14" fill="rgba(249,115,22,0.5)" font-family="system-ui">★</text>
+    <text x="155" y="55" font-size="14" fill="rgba(249,115,22,0.5)" font-family="system-ui">★</text>
+    <text x="160" y="150" font-size="11" fill="rgba(249,115,22,0.4)" font-family="system-ui">★</text>
+    <text x="22" y="148" font-size="11" fill="rgba(249,115,22,0.4)" font-family="system-ui">★</text>
+    <!-- Protection label -->
+    <text x="100" y="228" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.4)" font-family="system-ui, sans-serif" letter-spacing="1.5">PROTECTED</text>
+  </svg>
+</div>
     </div>
   </div>
 </section>

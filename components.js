@@ -8,7 +8,7 @@ function renderHeader(depth = 0) {
   const r = getRelPath(depth);
   return `
 <div class="announcement-banner">
-  🔒 Limited Time: Save 63% on Aura Identity Protection — <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored">Get Protected Now →</a>
+  Limited Time: Save 63% on Aura Identity Protection — <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored">Get Protected Now →</a>
 </div>
 <header class="site-header">
   <div class="container">
@@ -53,7 +53,7 @@ function renderHeader(depth = 0) {
     <a href="${r}pages/resources/index.html">Resources</a>
     <a href="${r}pages/victim-support.html">Victim Support</a>
     <a href="${r}pages/about.html">About</a>
-    <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" style="color:#f97316;font-weight:700;">🔒 Get Protected with Aura</a>
+    <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" style="color:#f97316;font-weight:700;">Get Protected with Aura</a>
   </nav>
 </header>`;
 }
@@ -116,17 +116,17 @@ function renderAuraBlock(variant = 'default', depth = 0) {
   if (variant === 'compact') {
     return `
 <div class="aura-callout">
-  <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.25rem">⚠️ Affiliate Disclosure — We may earn a commission at no cost to you. <a href="${disclosurePath}" style="color:#fdba74;text-decoration:underline">See disclosure.</a></p>
-  <h4>🔒 Has Your Identity Been Compromised?</h4>
+  <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.25rem"><span style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fdba74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Affiliate Disclosure</span> — We may earn a commission at no cost to you. <a href="${disclosurePath}" style="color:#fdba74;text-decoration:underline">See disclosure.</a></p>
+  <h4>Has Your Identity Been Compromised?</h4>
   <p>Aura monitors your credit at all 3 bureaus 24/7, alerts you in seconds, and covers eligible losses up to $1M.</p>
   <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary" style="margin-top:0.75rem">Try Aura Free →</a>
 </div>`;
   }
   return `
 <div class="aura-block">
-  <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.5rem">⚠️ Affiliate Disclosure — We may earn a commission at no extra cost to you if you purchase through our link. <a href="${disclosurePath}" style="color:#fdba74;text-decoration:underline">Full disclosure.</a></p>
+  <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.5rem"><span style="display:inline-flex;align-items:center;gap:0.25rem;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fdba74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Affiliate Disclosure</span> — We may earn a commission at no extra cost to you if you purchase through our link. <a href="${disclosurePath}" style="color:#fdba74;text-decoration:underline">Full disclosure.</a></p>
   <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
-    <span style="font-size:1.8rem">🛡️</span>
+    <span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:rgba(249,115,22,0.15);border-radius:8px;border:1px solid rgba(249,115,22,0.3);flex-shrink:0"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
     <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fdba74">#1 Recommended</span>
   </div>
   <h3>Protect Your Identity Now — Starting at $12/mo</h3>
