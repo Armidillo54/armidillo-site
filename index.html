@@ -25,70 +25,126 @@
 </script>
 
 <style>
-/* ─── Hero Illustration Animations ─── */
-@keyframes float-up-down {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
-}
-@keyframes shield-glow {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(249,115,22,0.25)) drop-shadow(0 4px 24px rgba(26,43,107,0.5)); }
-  50%       { filter: drop-shadow(0 0 28px rgba(249,115,22,0.55)) drop-shadow(0 4px 24px rgba(26,43,107,0.5)); }
-}
-@keyframes data-stream {
-  from { stroke-dashoffset: 400; }
-  to   { stroke-dashoffset: 0; }
-}
-@keyframes dot-pulse {
-  0%, 100% { opacity: 0.3; r: 3px; }
-  50%       { opacity: 1;   r: 5px; }
-}
-@keyframes badge-pop {
-  0%   { transform: scale(0.85) translateY(6px); opacity: 0; }
-  100% { transform: scale(1)    translateY(0);   opacity: 1; }
-}
-@keyframes scan-line {
-  from { transform: translateY(-100%); }
-  to   { transform: translateY(300%); }
-}
-@keyframes check-draw {
-  from { stroke-dashoffset: 80; }
-  to   { stroke-dashoffset: 0; }
+/* ─── Photo Hero ─── */
+.hero {
+  position: relative;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero-illustration-wrap { animation: float-up-down 5s ease-in-out infinite; }
-  .hero-shield-group       { animation: shield-glow 3s ease-in-out infinite; }
-  .stream-path             { stroke-dasharray: 400; animation: data-stream 3s linear infinite; }
-  .stream-path-2           { stroke-dasharray: 400; animation: data-stream 3.4s linear infinite 0.5s; }
-  .stream-path-3           { stroke-dasharray: 400; animation: data-stream 2.8s linear infinite 1s; }
-  .dot-1 { animation: dot-pulse 2s ease-in-out infinite; }
-  .dot-2 { animation: dot-pulse 2s ease-in-out infinite 0.5s; }
-  .dot-3 { animation: dot-pulse 2s ease-in-out infinite 1s; }
-  .badge-alert  { animation: badge-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.8s both; }
-  .badge-safe   { animation: badge-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.1s both; }
-  .badge-monitor{ animation: badge-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.4s both; }
-  .scan-line-el { animation: scan-line 2.5s linear infinite; }
-  .check-path   { stroke-dasharray: 80; animation: check-draw 0.6s ease-out 1.6s both; }
+/* The hero section itself defines height — photo fills it */
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: clamp(520px, 60vw, 680px);
+  gap: 0;
 }
-
-/* Card icon SVG override */
-.card-icon-svg svg { display: block; }
-
-/* Hero visual container */
-.hero-visual {
+.hero-content-col {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  overflow: visible;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
+  position: relative;
+  z-index: 2;
 }
-.hero-illustration-wrap {
-  width: min(420px, 100%);
-  height: auto;
-  overflow: visible;
+
+/* Right column: photo fills height of grid row */
+.hero-photo-col {
+  position: relative;
+  overflow: hidden;
+}
+.hero-photo-col img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;   /* show face, not cropped */
+  display: block;
+}
+/* Gradient fade left edge: photo bleeds into navy */
+.hero-photo-col::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #0d1b3e 0%, rgba(13,27,62,0.6) 30%, rgba(13,27,62,0) 65%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Trust pills: anchored inside photo column, bottom-left */
+.hero-photo-trust {
+  position: absolute;
+  left: clamp(0.75rem, 3vw, 1.5rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.hero-trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(6px);
+  border-radius: 40px;
+  padding: 0.4rem 0.85rem 0.4rem 0.5rem;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+  font-family: Inter, sans-serif;
+  font-size: 0.77rem;
+  font-weight: 700;
+  color: #0d1b3e;
+  white-space: nowrap;
+  width: fit-content;
+}
+.hero-trust-pill svg { flex-shrink: 0; }
+
+/* Mobile: photo becomes a banner above the text */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: unset;
+    max-width: 100%;
+    overflow: hidden;
+    /* on mobile: photo row first, content row second */
+  }
+  .hero-photo-col {
+    order: -1;
+    height: clamp(260px, 55vw, 340px);
+    min-height: 260px;
+  }
+  .hero-photo-col img {
+    object-position: 65% 20%;
+  }
+  .hero-photo-col::before {
+    background: linear-gradient(to bottom, rgba(13,27,62,0) 50%, #0d1b3e 100%);
+  }
+  .hero-content-col {
+    padding-block: clamp(1.25rem, 4vw, 2rem);
+    padding-right: 0;
+    min-width: 0;
+    overflow: hidden;
+    word-break: break-word;
+  }
+  .hero-content-col h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.2;
+  }
+  .hero-photo-trust {
+    left: 1rem;
+    bottom: 0.75rem;
+    gap: 0.4rem;
+  }
+  .hero-trust-pill {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.7rem 0.35rem 0.45rem;
+  }
 }
 </style>
-
-
 </head>
 <body>
 <a href="#main" class="sr-only">Skip to main content</a>
@@ -99,135 +155,49 @@
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-badge"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;color:currentColor"><path d="M10 2L3 5v5c0 4.418 3.13 8.552 7 9.5C13.87 18.552 17 14.418 17 10V5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Trusted Fraud Prevention Resource</div>
-        <h1>Learn to Protect Yourself from <span class="accent">Online Fraud</span></h1>
-        <p class="hero-desc">Empowering you with knowledge and practical tools to navigate the digital world safely — ensuring peace of mind for every generation.</p>
-        <ul class="hero-bullets">
-          <li>Get simple steps to protect your money and personal information</li>
-          <li>Learn how to spot tricky scams before they fool you</li>
-          <li>Find easy-to-use tools recommended by security experts</li>
-        </ul>
-        <div class="hero-actions">
-        <a href="pages/i-got-scammed.html" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);font-weight:700">Just Got Scammed? Act Now →</a>
-          <a href="pages/learning-center/index.html" class="btn btn-primary btn-lg">Explore Free Guides</a>
-          <a href="pages/senior-security-hub/index.html" class="btn btn-outline btn-lg">Visit Senior Hub</a>
-        </div>
-        <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.45);margin-top:1rem"><em>We may earn a commission if you buy through links on this page, at no extra cost to you. This helps us keep our guides free.</em></p>
-        <div class="hero-stats">
-          <div class="stat-item"><span class="stat-number">$442B</span><span class="stat-label">Global fraud losses in 2025</span></div>
-          <div class="stat-item"><span class="stat-number">54%</span><span class="stat-label">Rise in fraud cases YoY</span></div>
-          <div class="stat-item"><span class="stat-number">40+</span><span class="stat-label">Free guides &amp; articles</span></div>
+      <div class="hero-content-col">
+        <div class="hero-content">
+          <div class="hero-badge"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;color:currentColor"><path d="M10 2L3 5v5c0 4.418 3.13 8.552 7 9.5C13.87 18.552 17 14.418 17 10V5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Trusted Fraud Prevention Resource</div>
+          <h1>Learn to Protect Yourself from <span class="accent">Online Fraud</span></h1>
+          <p class="hero-desc">Empowering you with knowledge and practical tools to navigate the digital world safely — ensuring peace of mind for every generation.</p>
+          <ul class="hero-bullets">
+            <li>Get simple steps to protect your money and personal information</li>
+            <li>Learn how to spot tricky scams before they fool you</li>
+            <li>Find easy-to-use tools recommended by security experts</li>
+          </ul>
+          <div class="hero-actions" style="flex-direction:column;align-items:flex-start;gap:0.75rem">
+            <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg" style="font-size:1.05rem;padding:0.9rem 2rem;letter-spacing:0.01em">Get Aura Protection — Try Free 14 Days &#x2192;</a>
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+              <a href="pages/i-got-scammed.html" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);font-weight:600;font-size:0.9rem">Just Got Scammed? Act Now</a>
+              <a href="pages/learning-center/index.html" class="btn btn-outline btn-lg" style="font-size:0.9rem">Explore Free Guides</a>
+            </div>
+          </div>
+          <p style="font-size:var(--text-xs);color:rgba(255,255,255,0.45);margin-top:0.5rem"><em>Affiliate link — we may earn a commission at no extra cost to you. <a href="pages/affiliate-disclosure.html" style="color:rgba(255,255,255,0.55);text-decoration:underline">See disclosure.</a></em></p>
+          <div class="hero-stats">
+            <div class="stat-item"><span class="stat-number">$442B</span><span class="stat-label">Global fraud losses in 2025</span></div>
+            <div class="stat-item"><span class="stat-number">54%</span><span class="stat-label">Rise in fraud cases YoY</span></div>
+            <div class="stat-item"><span class="stat-number">40+</span><span class="stat-label">Free guides &amp; articles</span></div>
+          </div>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-illustration-wrap">
-          <svg viewBox="0 0 420 480" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-            
-            <!-- Background glow circles -->
-            <circle cx="210" cy="240" r="180" fill="rgba(90,120,212,0.06)"/>
-            <circle cx="210" cy="240" r="130" fill="rgba(90,120,212,0.06)"/>
-            <circle cx="210" cy="240" r="80"  fill="rgba(249,115,22,0.05)"/>
-
-            <!-- Data stream lines flowing into shield -->
-            <path class="stream-path" d="M 30 80  Q 80 120 120 170  Q 150 200 170 230" 
-                  stroke="rgba(147,181,255,0.5)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <path class="stream-path-2" d="M 390 70  Q 340 110 310 160  Q 280 200 255 225" 
-                  stroke="rgba(249,115,22,0.4)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <path class="stream-path-3" d="M 20 350  Q 80 320 130 300  Q 160 290 175 275" 
-                  stroke="rgba(147,181,255,0.4)" stroke-width="1" stroke-linecap="round" fill="none"/>
-
-            <!-- Orbit dots on streams -->
-            <circle class="dot-1" cx="75"  cy="105" r="3" fill="#93b5ff"/>
-            <circle class="dot-2" cx="345" cy="100" r="3" fill="#f97316"/>
-            <circle class="dot-3" cx="65"  cy="338" r="3" fill="#93b5ff"/>
-            
-            <!-- SHIELD GROUP (central element) -->
-            <g class="hero-shield-group" transform="translate(210, 255)">
-              <!-- Shield body -->
-              <path d="M0 -130 L-90 -95 L-90 -10 C-90 55 -48 107 0 123 C48 107 90 55 90 -10 L90 -95 Z"
-                    fill="url(#shieldGrad)" stroke="rgba(249,115,22,0.6)" stroke-width="2.5"/>
-              <!-- Shield inner highlight -->
-              <path d="M0 -118 L-80 -87 L-80 -10 C-80 48 -43 96 0 111 C43 96 80 48 80 -10 L80 -87 Z"
-                    fill="url(#shieldInner)" opacity="0.6"/>
-              <!-- Shield gloss top edge -->
-              <path d="M-72 -82 L0 -112 L72 -82" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
-              <!-- Scan line security effect -->
-              <clipPath id="shieldClip">
-                <path d="M0 -130 L-90 -95 L-90 -10 C-90 55 -48 107 0 123 C48 107 90 55 90 -10 L90 -95 Z"/>
-              </clipPath>
-              <g clip-path="url(#shieldClip)">
-                <rect class="scan-line-el" x="-90" y="-130" width="180" height="18" 
-                      fill="url(#scanGrad)" opacity="0.4"/>
-              </g>
-              <!-- Checkmark inside shield -->
-              <path class="check-path" d="M-32 -5 L-10 20 L38 -28"
-                    stroke="#f97316" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <!-- Lock icon below check -->
-              <rect x="-12" y="35" width="24" height="18" rx="4" fill="rgba(249,115,22,0.2)" stroke="rgba(249,115,22,0.5)" stroke-width="1.5"/>
-              <path d="M-8 35 L-8 28 C-8 22 8 22 8 28 L8 35" stroke="rgba(249,115,22,0.7)" stroke-width="1.5" fill="none"/>
-              <circle cx="0" cy="44" r="3" fill="rgba(249,115,22,0.8)"/>
-            </g>
-
-            <!-- PERSON SILHOUETTE -->
-            <circle cx="210" cy="110" r="32" fill="url(#personGrad)"/>
-            <path d="M165 185 Q165 155 210 150 Q255 155 255 185 L262 280 L158 280 Z" fill="url(#personGrad)"/>
-            <path d="M165 185 Q140 210 132 250" stroke="url(#personGradStr)" stroke-width="22" stroke-linecap="round" fill="none"/>
-            <path d="M255 185 Q280 210 288 250" stroke="url(#personGradStr)" stroke-width="22" stroke-linecap="round" fill="none"/>
-
-            <!-- FLOATING BADGE: THREAT BLOCKED -->
-            <g transform="translate(28, 148)"><g class="badge-alert">
-              <rect x="0" y="0" width="138" height="44" rx="10" fill="rgba(13,27,62,0.95)" stroke="rgba(249,115,22,0.45)" stroke-width="1.5"/>
-              <circle cx="22" cy="22" r="11" fill="rgba(249,115,22,0.18)" stroke="rgba(249,115,22,0.55)" stroke-width="1.5"/>
-              <path d="M22 14 L28.5 25.5 L15.5 25.5 Z" stroke="#f97316" stroke-width="1.3" fill="none"/>
-              <line x1="22" y1="17.5" x2="22" y2="22" stroke="#f97316" stroke-width="1.1"/>
-              <circle cx="22" cy="24.2" r="0.9" fill="#f97316"/>
-              <text x="40" y="17" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="#fb923c" letter-spacing="0.04em">THREAT BLOCKED</text>
-              <text x="40" y="31" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.55)">Phishing attempt stopped</text>
-            </g></g>
-
-            <!-- FLOATING BADGE: IDENTITY SAFE -->
-            <g transform="translate(258, 122)"><g class="badge-safe">
-              <rect x="0" y="0" width="138" height="44" rx="10" fill="rgba(13,27,62,0.95)" stroke="rgba(74,222,128,0.4)" stroke-width="1.5"/>
-              <circle cx="22" cy="22" r="11" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.5)" stroke-width="1.5"/>
-              <path d="M16 22 L20 26.5 L28 16" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <text x="40" y="17" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="#4ade80" letter-spacing="0.04em">IDENTITY SAFE</text>
-              <text x="40" y="31" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.55)">3-bureau monitoring on</text>
-            </g></g>
-
-            <!-- FLOATING BADGE: AURA MONITORING -->
-            <g transform="translate(263, 348)"><g class="badge-monitor">
-              <rect x="0" y="0" width="138" height="44" rx="10" fill="rgba(13,27,62,0.95)" stroke="rgba(147,181,255,0.4)" stroke-width="1.5"/>
-              <circle cx="22" cy="22" r="11" fill="rgba(147,181,255,0.1)" stroke="rgba(147,181,255,0.4)" stroke-width="1.5"/>
-              <path d="M22 14 L16 16.5 L16 21 C16 24.5 18.7 27.5 22 28.5 C25.3 27.5 28 24.5 28 21 L28 16.5 Z" stroke="#93b5ff" stroke-width="1.3" fill="none"/>
-              <text x="40" y="17" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="#93b5ff" letter-spacing="0.04em">AURA MONITORING</text>
-              <text x="40" y="31" font-family="Inter,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.55)">Real-time fraud alerts</text>
-            </g></g>
-
-            <defs>
-              <linearGradient id="shieldGrad" x1="0" y1="-130" x2="0" y2="130" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#2d428a"/>
-                <stop offset="100%" stop-color="#1a2b6b"/>
-              </linearGradient>
-              <linearGradient id="shieldInner" x1="0" y1="-120" x2="0" y2="110" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="rgba(255,255,255,0.13)"/>
-                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-              </linearGradient>
-              <linearGradient id="personGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="rgba(147,181,255,0.38)"/>
-                <stop offset="100%" stop-color="rgba(90,120,212,0.18)"/>
-              </linearGradient>
-              <linearGradient id="personGradStr" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="rgba(147,181,255,0.38)"/>
-                <stop offset="100%" stop-color="rgba(90,120,212,0.18)"/>
-              </linearGradient>
-              <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="transparent"/>
-                <stop offset="50%" stop-color="rgba(249,115,22,0.8)"/>
-                <stop offset="100%" stop-color="transparent"/>
-              </linearGradient>
-            </defs>
-          </svg>
+      <div class="hero-photo-col">
+        <picture>
+          <source srcset="./assets/hero-photo.webp" type="image/webp">
+          <img src="./assets/hero-photo.jpg" alt="Confident woman feeling protected from online fraud" loading="eager" decoding="async" width="1400" height="781">
+        </picture>
+        <div class="hero-photo-trust" aria-hidden="true">
+          <div class="hero-trust-pill">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5v5c0 4.418 3.13 8.552 7 9.5C13.87 18.552 17 14.418 17 10V5L10 2z" stroke="#f97316" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Identity Monitored 24/7
+          </div>
+          <div class="hero-trust-pill">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8" stroke="#22c55e" stroke-width="1.8"/><path d="M7 10l2 2 4-4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            $1M Identity Insurance
+          </div>
+          <div class="hero-trust-pill">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="9" width="14" height="10" rx="2" stroke="#3b82f6" stroke-width="1.8"/><path d="M7 9V6a3 3 0 016 0v3" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round"/></svg>
+            3-Bureau Credit Watch
+          </div>
         </div>
       </div>
     </div>
@@ -243,15 +213,37 @@
         <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fdba74">Our #1 Pick for Total Digital Protection</span>
       </div>
       <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;margin-bottom:0.5rem">Protect Your Identity Now — Starting at $12/Month</h2>
-      <p style="color:rgba(255,255,255,0.75);margin-bottom:0.75rem">Stop scammers in their tracks with Aura's all-in-one identity theft, fraud, and online privacy protection. Over 2 million seniors protected.</p>
-      <div class="aura-badges">
+      <p style="color:rgba(255,255,255,0.75);margin-bottom:0.75rem">Stop scammers in their tracks with Aura&#39;s all-in-one identity theft, fraud, and online privacy protection. Over 2 million Americans protected.</p>
+      <div class="aura-badges" style="margin-bottom:1rem">
         <span class="aura-badge" style="display:inline-flex;align-items:center;gap:0.3rem"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Rated #1 Identity Theft Protection 2026</span>
         <span class="aura-badge">$1M Insurance Coverage</span>
         <span class="aura-badge">3-Bureau Credit Monitoring</span>
         <span class="aura-badge">14-Day Free Trial</span>
       </div>
-      <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.75rem"><span style="display:inline-flex;align-items:center;gap:0.3rem;vertical-align:middle"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fdba74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Affiliate Disclosure</span> — We may earn a commission at no extra cost to you if you click this link and subscribe. <a href="pages/affiliate-disclosure.html" style="color:#fdba74;text-decoration:underline">See full disclosure.</a></p>
-      <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg">SAVE 63% — GET AURA NOW</a>
+      <!-- Pricing tiers -->
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem">
+        <div style="flex:1;min-width:130px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem;text-align:center">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.25rem">Individual</div>
+          <div style="font-size:1.4rem;font-weight:800;color:#fff">$12<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.15rem">1 person</div>
+        </div>
+        <div style="flex:1;min-width:130px;background:rgba(249,115,22,0.12);border:2px solid rgba(249,115,22,0.5);border-radius:10px;padding:0.75rem 1rem;text-align:center;position:relative">
+          <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#f97316;color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:20px;white-space:nowrap">Most Popular</div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.25rem">Couple</div>
+          <div style="font-size:1.4rem;font-weight:800;color:#fff">$22<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.15rem">2 people</div>
+        </div>
+        <div style="flex:1;min-width:130px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem;text-align:center">
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.25rem">Family</div>
+          <div style="font-size:1.4rem;font-weight:800;color:#fff">$32<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.15rem">Up to 5 people</div>
+        </div>
+      </div>
+      <p style="font-size:0.7rem;font-weight:600;color:rgba(255,255,255,0.45);margin-bottom:0.75rem"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:0.3rem" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><em>Affiliate link — we earn a commission at no extra cost to you if you subscribe. <a href="pages/affiliate-disclosure.html" style="color:rgba(255,255,255,0.55);text-decoration:underline">Full disclosure.</a></em></p>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center">
+        <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg" style="font-size:1rem;padding:0.85rem 1.75rem">SAVE 63% — START FREE TRIAL &#x2192;</a>
+        <a href="pages/learning-center/aura-identity-theft-protection-review.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:underline">Read our full Aura review</a>
+      </div>
     </div>
   </div>
 </section>
@@ -416,11 +408,6 @@
   </div>
 </section>
 
-<section>
-  <div class="container">
-    
-  </div>
-</section>
 
 </main>
 <div id="footer-inject"></div>
