@@ -21,3 +21,5 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /got-scammed  /pages/i-got-scammed.html  301
 /i-just-got-scammed  /pages/i-got-scammed.html  301
 /just-got-scammed  /pages/i-got-scammed.html  301
+
+/resources/essential-tools /resources 301

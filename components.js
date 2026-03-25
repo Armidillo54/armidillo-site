@@ -31,7 +31,7 @@ function renderHeader(depth = 0) {
             <li><a href="${r}pages/resources/index.html">Resource Hub</a></li>
           </ul>
         </li>
-        <li><a href="${r}pages/resources/essential-tools.html">Tools</a></li>
+        <li><a href="${r}pages/resources/index.html">Resources</a></li>
         <li><a href="${r}pages/victim-support.html">Victim Support</a></li>
         <li><a href="${r}pages/about.html">About</a></li>
         <li><a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="nav-cta">Get Protected</a></li>
@@ -50,7 +50,7 @@ function renderHeader(depth = 0) {
     <a href="${r}index.html">Home</a>
     <a href="${r}pages/learning-center/index.html">Learning Center</a>
     <a href="${r}pages/senior-security-hub/index.html">Senior Security Hub</a>
-    <a href="${r}pages/resources/essential-tools.html">Tools</a>
+    <a href="${r}pages/resources/index.html">Resources</a>
     <a href="${r}pages/victim-support.html">Victim Support</a>
     <a href="${r}pages/about.html">About</a>
     <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" style="color:#f97316;font-weight:700;">🔒 Get Protected with Aura</a>
@@ -89,7 +89,7 @@ function renderFooter(depth = 0) {
           <li><a href="${r}pages/learning-center/index.html">Learning Center</a></li>
           <li><a href="${r}pages/victim-support.html">Victim Support</a></li>
           <li><a href="${r}pages/senior-security-hub/index.html">Senior Security Hub</a></li>
-          <li><a href="${r}pages/resources/essential-tools.html">Essential Tools</a></li>
+          <li><a href="${r}pages/resources/index.html">Resources</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -104,7 +104,7 @@ function renderFooter(depth = 0) {
     </div>
     <div class="footer-bottom">
       <p>© 2026 Armidillo Security. All Rights Reserved.</p>
-      <p class="footer-pplx">Built with <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Perplexity Computer</a></p>
+      
     </div>
   </div>
 </footer>`;
@@ -129,7 +129,7 @@ function renderAuraBlock(variant = 'default', depth = 0) {
     <span style="font-size:1.8rem">🛡️</span>
     <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fdba74">#1 Recommended</span>
   </div>
-  <h3>Protect Your Identity Now — Starting at $12/Month</h3>
+  <h3>Protect Your Identity Now — Starting at $12/mo</h3>
   <p style="color:rgba(255,255,255,0.75);font-size:0.95rem;margin-bottom:0.5rem">All-in-one identity theft protection, 3-bureau credit monitoring, and $1M insurance coverage.</p>
   <div class="aura-badges">
     <span class="aura-badge">⭐ Rated #1 Identity Theft Protection 2026</span>
