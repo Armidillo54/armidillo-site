@@ -28,14 +28,11 @@ function renderHeader(depth = 0) {
           <ul class="dropdown-menu" role="list">
             <li><a href="${r}pages/learning-center/index.html">Learning Center</a></li>
             <li><a href="${r}pages/senior-security-hub/index.html">Senior Security Hub</a></li>
-            <li><a href="${r}pages/home-security-hub/index.html">Home Security Hub</a></li>
             <li><a href="${r}pages/resources/index.html">Resource Hub</a></li>
-            <li><a href="${r}pages/glossary.html">Glossary</a></li>
           </ul>
         </li>
         <li><a href="${r}pages/resources/essential-tools.html">Tools</a></li>
         <li><a href="${r}pages/victim-support.html">Victim Support</a></li>
-        <li><a href="${r}pages/for-business.html">For Business</a></li>
         <li><a href="${r}pages/about.html">About</a></li>
         <li><a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="nav-cta">Get Protected</a></li>
       </ul>
@@ -55,9 +52,7 @@ function renderHeader(depth = 0) {
     <a href="${r}pages/senior-security-hub/index.html">Senior Security Hub</a>
     <a href="${r}pages/resources/essential-tools.html">Tools</a>
     <a href="${r}pages/victim-support.html">Victim Support</a>
-    <a href="${r}pages/for-business.html">For Business</a>
     <a href="${r}pages/about.html">About</a>
-    <a href="${r}pages/subscribe.html">Subscribe</a>
     <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" style="color:#f97316;font-weight:700;">🔒 Get Protected with Aura</a>
   </nav>
 </header>`;
@@ -78,15 +73,13 @@ function renderFooter(depth = 0) {
           Armidillo
         </a>
         <p class="footer-tagline">Fraud prevention education, scam awareness, and identity protection resources for every generation.</p>
-        <p class="footer-disclaimer">Armidillo is a research and educational resource. We are not a law firm or financial advisor. Content is for informational purposes only. We are not affiliated with any government agency.</p>
+        <p class="footer-disclaimer">Armidillo is an educational resource, not a law firm or financial advisor. Content is for informational purposes only. We are not affiliated with any government agency.</p>
         <p class="footer-disclaimer" style="margin-top:0.5rem;">Contact: <a href="mailto:info@armidillo.com" style="color:rgba(255,255,255,0.45)">info@armidillo.com</a></p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul role="list">
           <li><a href="${r}pages/about.html">About Us</a></li>
-          <li><a href="${r}pages/for-business.html">For Business</a></li>
-          <li><a href="${r}pages/subscribe.html">Subscribe</a></li>
           <li><a href="${r}pages/affiliate-disclosure.html">Affiliate Disclosure</a></li>
         </ul>
       </div>
@@ -95,9 +88,8 @@ function renderFooter(depth = 0) {
         <ul role="list">
           <li><a href="${r}pages/learning-center/index.html">Learning Center</a></li>
           <li><a href="${r}pages/victim-support.html">Victim Support</a></li>
+          <li><a href="${r}pages/senior-security-hub/index.html">Senior Security Hub</a></li>
           <li><a href="${r}pages/resources/essential-tools.html">Essential Tools</a></li>
-          <li><a href="${r}pages/glossary.html">Glossary</a></li>
-          <li><a href="${r}pages/scam-assessment.html">Scam Assessment</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -118,18 +110,21 @@ function renderFooter(depth = 0) {
 </footer>`;
 }
 
-function renderAuraBlock(variant = 'default') {
+function renderAuraBlock(variant = 'default', depth = 0) {
+  const r = getRelPath(depth);
+  const disclosurePath = depth === 0 ? 'pages/affiliate-disclosure.html' : '../'.repeat(depth) + 'pages/affiliate-disclosure.html';
   if (variant === 'compact') {
     return `
 <div class="aura-callout">
+  <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.25rem">⚠️ Affiliate Disclosure — We may earn a commission at no cost to you. <a href="${disclosurePath}" style="color:#fdba74;text-decoration:underline">See disclosure.</a></p>
   <h4>🔒 Has Your Identity Been Compromised?</h4>
   <p>Aura monitors your credit at all 3 bureaus 24/7, alerts you in seconds, and covers eligible losses up to $1M.</p>
   <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary" style="margin-top:0.75rem">Try Aura Free →</a>
-  <p class="aura-disclosure" style="margin-top:0.75rem"><em>Affiliate link — we may earn a commission at no extra cost to you. <a href="./affiliate-disclosure.html">See our Affiliate Disclosure.</a></em></p>
 </div>`;
   }
   return `
 <div class="aura-block">
+  <p style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.5rem">⚠️ Affiliate Disclosure — We may earn a commission at no extra cost to you if you purchase through our link. <a href="${disclosurePath}" style="color:#fdba74;text-decoration:underline">Full disclosure.</a></p>
   <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
     <span style="font-size:1.8rem">🛡️</span>
     <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fdba74">#1 Recommended</span>
@@ -142,18 +137,7 @@ function renderAuraBlock(variant = 'default') {
     <span class="aura-badge">3-Bureau Credit Monitoring</span>
   </div>
   <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg">Get Aura Protection Now →</a>
-  <p class="aura-disclosure">Affiliate link — we may earn a commission at no extra cost to you. Aura is available for US residents. <a href="./affiliate-disclosure.html">See our Affiliate Disclosure.</a></p>
-</div>`;
-}
-
-function renderSubscribeStrip(depth = 0) {
-  const r = getRelPath(depth);
-  return `
-<div class="subscribe-strip">
-  <h2>Get Monthly Fraud Alerts</h2>
-  <p>Stay ahead of emerging scam tactics with practical fraud prevention tips. No spam. Unsubscribe anytime.</p>
-  <!-- KIT FORM EMBED HERE -->
-  <a href="${r}pages/subscribe.html" class="btn btn-primary btn-lg">Protect Myself — Subscribe Free</a>
+  <p class="aura-disclosure" style="margin-top:0.75rem;font-size:0.75rem;color:rgba(255,255,255,0.6)">Aura is available for US residents. By clicking this link, we may earn a commission — at no extra cost to you. <a href="${disclosurePath}" style="color:rgba(255,255,255,0.6);text-decoration:underline">See our full Affiliate Disclosure.</a></p>
 </div>`;
 }
 
@@ -184,14 +168,32 @@ function initPage() {
       const open = nav.classList.toggle('active');
       btn.setAttribute('aria-expanded', open);
     });
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !btn.contains(e.target)) {
+        nav.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
-  // Glossary accordions
-  document.querySelectorAll('.glossary-term').forEach(term => {
-    term.addEventListener('click', () => {
-      term.closest('.glossary-item').classList.toggle('open');
+  // Cookie consent banner
+  (function() {
+    if (localStorage.getItem('armidillo_cookie_consent')) return;
+    const banner = document.getElementById('cookie-consent-banner');
+    if (!banner) return;
+    banner.style.display = 'flex';
+    document.getElementById('cookie-accept-all')?.addEventListener('click', function() {
+      localStorage.setItem('armidillo_cookie_consent', 'all');
+      banner.style.display = 'none';
     });
-  });
+    document.getElementById('cookie-essential-only')?.addEventListener('click', function() {
+      localStorage.setItem('armidillo_cookie_consent', 'essential');
+      // Disable GA if essential only
+      window['ga-disable-G-HPYFRNRNC7'] = true;
+      banner.style.display = 'none';
+    });
+  })();
 
   // Scroll-reveal
   if ('IntersectionObserver' in window) {
@@ -204,7 +206,7 @@ function initPage() {
         }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.card, .article-card, .hub-card').forEach(el => {
+    document.querySelectorAll('.card, .article-card, .hub-card, .lc-card').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(16px)';
       el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';

@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
 Disallow: /content-strategy
+Disallow: /for-business
+Disallow: /subscribe
+Disallow: /scam-assessment
+Disallow: /home-security-hub
+Disallow: /glossary
 
 Sitemap: https://www.armidillo.com/sitemap.xml
