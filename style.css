@@ -1565,3 +1565,30 @@ html, body {
   .scam-cta-inner { flex-direction: column; }
   .scam-cta-btn { width: 100%; text-align: center; }
 }
+
+
+/* Quick Answer Box — GEO/AI optimization */
+.quick-answer-box {
+  background: #f0f4ff;
+  border: 1px solid #c7d7f9;
+  border-left: 4px solid #3b82f6;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0 2rem 0;
+}
+.quick-answer-box h2 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1d4ed8;
+  margin: 0 0 0.625rem 0;
+  padding: 0;
+  border: none;
+}
+.quick-answer-box p {
+  font-size: 1rem;
+  color: #293241;
+  margin: 0;
+  line-height: 1.65;
+}
