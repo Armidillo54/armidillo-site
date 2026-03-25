@@ -38,17 +38,20 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
-  min-height: clamp(520px, 60vw, 680px);
+  min-height: clamp(560px, 55vw, 720px);
   gap: 0;
+  width: 100%;
 }
 .hero-content-col {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-block: clamp(2.5rem, 6vw, 4.5rem);
-  padding-right: clamp(1rem, 3vw, 2rem);
+  padding-left: clamp(1.25rem, calc((100vw - 1200px) / 2 + 2rem), 10vw);
+  padding-right: clamp(2rem, 4vw, 4rem);
   position: relative;
   z-index: 2;
+  min-width: 0;
 }
 
 /* Right column: photo fills height of grid row */
@@ -125,14 +128,20 @@
   }
   .hero-content-col {
     padding-block: clamp(1.25rem, 4vw, 2rem);
-    padding-right: 0;
+    padding-inline: clamp(1rem, 5vw, 1.5rem);
     min-width: 0;
-    overflow: hidden;
-    word-break: break-word;
   }
   .hero-content-col h1 {
     font-size: clamp(1.75rem, 8vw, 2.5rem);
     line-height: 1.2;
+  }
+  .hero-actions {
+    width: 100%;
+  }
+  .hero-actions > a:first-child {
+    width: 100% !important;
+    text-align: center;
+    box-sizing: border-box;
   }
   .hero-photo-trust {
     left: 1rem;
@@ -153,8 +162,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-grid">
+  <div class="hero-grid">
       <div class="hero-content-col">
         <div class="hero-content">
           <div class="hero-badge"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;color:currentColor"><path d="M10 2L3 5v5c0 4.418 3.13 8.552 7 9.5C13.87 18.552 17 14.418 17 10V5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Trusted Fraud Prevention Resource</div>
@@ -165,8 +173,8 @@
             <li>Learn how to spot tricky scams before they fool you</li>
             <li>Find easy-to-use tools recommended by security experts</li>
           </ul>
-          <div class="hero-actions" style="flex-direction:column;align-items:flex-start;gap:0.75rem">
-            <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg" style="font-size:1.05rem;padding:0.9rem 2rem;letter-spacing:0.01em">Get Aura Protection — Try Free 14 Days &#x2192;</a>
+          <div class="hero-actions" style="flex-direction:column;align-items:flex-start;gap:0.75rem;width:100%;max-width:100%">
+            <a href="https://aurainc.sjv.io/bOKKNk" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-lg" style="font-size:1.05rem;padding:0.9rem 2rem;letter-spacing:0.01em;max-width:100%;box-sizing:border-box;white-space:normal;text-align:center">Get Aura Protection — Try Free 14 Days →</a>
             <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
               <a href="pages/i-got-scammed.html" class="btn" style="background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.3);font-weight:600;font-size:0.9rem">Just Got Scammed? Act Now</a>
               <a href="pages/learning-center/index.html" class="btn btn-outline btn-lg" style="font-size:0.9rem">Explore Free Guides</a>
@@ -188,19 +196,18 @@
         <div class="hero-photo-trust" aria-hidden="true">
           <div class="hero-trust-pill">
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 2L3 5v5c0 4.418 3.13 8.552 7 9.5C13.87 18.552 17 14.418 17 10V5L10 2z" stroke="#f97316" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 10l2 2 4-4" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Identity Monitored 24/7
+            40+ Free Expert Guides
           </div>
           <div class="hero-trust-pill">
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="8" stroke="#22c55e" stroke-width="1.8"/><path d="M7 10l2 2 4-4" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            $1M Identity Insurance
+            Trusted by American Families
           </div>
           <div class="hero-trust-pill">
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="9" width="14" height="10" rx="2" stroke="#3b82f6" stroke-width="1.8"/><path d="M7 9V6a3 3 0 016 0v3" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round"/></svg>
-            3-Bureau Credit Watch
+            No Jargon — Plain English
           </div>
         </div>
       </div>
-    </div>
   </div>
 </section>
 
@@ -212,7 +219,7 @@
         <span style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(249,115,22,0.15);border-radius:8px;border:1px solid rgba(249,115,22,0.3)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></span>
         <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fdba74">Our #1 Pick for Total Digital Protection</span>
       </div>
-      <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;margin-bottom:0.5rem">Protect Your Identity Now — Starting at $12/Month</h2>
+      <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;margin-bottom:0.5rem">Protect Your Identity Now — Starting at $10/Month</h2>
       <p style="color:rgba(255,255,255,0.75);margin-bottom:0.75rem">Stop scammers in their tracks with Aura&#39;s all-in-one identity theft, fraud, and online privacy protection. Over 2 million Americans protected.</p>
       <div class="aura-badges" style="margin-bottom:1rem">
         <span class="aura-badge" style="display:inline-flex;align-items:center;gap:0.3rem"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" stroke-width="1" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Rated #1 Identity Theft Protection 2026</span>
@@ -224,18 +231,18 @@
       <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem">
         <div style="flex:1;min-width:130px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem;text-align:center">
           <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.25rem">Individual</div>
-          <div style="font-size:1.4rem;font-weight:800;color:#fff">$12<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
+          <div style="font-size:1.4rem;font-weight:800;color:#fff">$10<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
           <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.15rem">1 person</div>
         </div>
         <div style="flex:1;min-width:130px;background:rgba(249,115,22,0.12);border:2px solid rgba(249,115,22,0.5);border-radius:10px;padding:0.75rem 1rem;text-align:center;position:relative">
           <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#f97316;color:#fff;font-size:0.6rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:20px;white-space:nowrap">Most Popular</div>
           <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#fdba74;margin-bottom:0.25rem">Couple</div>
-          <div style="font-size:1.4rem;font-weight:800;color:#fff">$22<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
+          <div style="font-size:1.4rem;font-weight:800;color:#fff">$18<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
           <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.15rem">2 people</div>
         </div>
         <div style="flex:1;min-width:130px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem;text-align:center">
           <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.25rem">Family</div>
-          <div style="font-size:1.4rem;font-weight:800;color:#fff">$32<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
+          <div style="font-size:1.4rem;font-weight:800;color:#fff">$29<span style="font-size:0.75rem;font-weight:500;color:rgba(255,255,255,0.55)">/mo</span></div>
           <div style="font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:0.15rem">Up to 5 people</div>
         </div>
       </div>
