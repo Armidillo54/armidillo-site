@@ -907,21 +907,28 @@ section { padding-block: clamp(var(--space-12), 8vw, var(--space-20)); }
 }
 
 /* ─── BREADCRUMB ─── */
-.breadcrumb {
-  display: flex;
+ol.breadcrumb, ul.breadcrumb {
+  display: flex !important;
   align-items: center;
   gap: var(--space-2);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   padding-block: var(--space-4);
   flex-wrap: wrap;
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  counter-reset: none;
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
 }
-.breadcrumb li { display: flex; align-items: center; gap: var(--space-2); }
-.breadcrumb li::before { display: none; }
+ol.breadcrumb li, ul.breadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none !important;
+}
+ol.breadcrumb li::before,
+ol.breadcrumb li::marker,
+ul.breadcrumb li::before,
+ul.breadcrumb li::marker { display: none !important; content: none !important; }
 .breadcrumb a { color: var(--color-text-muted); text-decoration: none; }
 .breadcrumb a:hover { color: #f97316; }
 .breadcrumb span { opacity: 0.5; }
