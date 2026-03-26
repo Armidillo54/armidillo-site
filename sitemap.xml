@@ -451,6 +451,18 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.armidillo.com/learning-center/ssn-stolen-data-breach-what-to-do</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.armidillo.com/learning-center/ai-scams-personal-data-already-out-there</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.armidillo.com/victim-support</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
