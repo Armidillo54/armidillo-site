@@ -16,8 +16,9 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2026  301
 /contact  /about  301
 
-# SEO clean URLs (200 rewrites — serve file without redirect)
-/i-got-scammed  /pages/i-got-scammed.html  200
+# SEO clean URLs
+# Note: /i-got-scammed is served natively by Cloudflare at that path (file is at /pages/i-got-scammed.html)
+# Do NOT add a 200 rewrite — it causes a redirect loop via .html stripping
 /got-scammed  /i-got-scammed  301
 /i-just-got-scammed  /i-got-scammed  301
 /just-got-scammed  /i-got-scammed  301

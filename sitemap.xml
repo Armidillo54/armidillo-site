@@ -19,18 +19,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.armidillo.com/affiliate-disclosure</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.armidillo.com/cookie-policy</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.armidillo.com/crypto-scam-victim-support</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -349,19 +337,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.armidillo.com/privacy-policy</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
     <loc>https://www.armidillo.com/resources/crypto-safety</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.armidillo.com/resources/essential-tools</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -371,12 +347,6 @@
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.armidillo.com/senior-security-hub/best-identity-protection-2025</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://www.armidillo.com/senior-security-hub/best-identity-protection-2026</loc>
@@ -443,12 +413,6 @@
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://www.armidillo.com/terms-and-conditions</loc>
-    <lastmod>2026-03-25</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://www.armidillo.com/learning-center/ssn-stolen-data-breach-what-to-do</loc>
