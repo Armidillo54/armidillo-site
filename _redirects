@@ -5,21 +5,111 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 
 # Removed pages → logical destinations
 /subscribe  /  301
-/scam-assessment  /pages/victim-support.html  301
-/glossary  /pages/learning-center/index.html  301
-/for-business  /pages/about.html  301
+/scam-assessment  /victim-support  301
+/glossary  /learning-center  301
+/for-business  /about  301
 /home-security-hub  /  301
 /home-security-hub/*  /  301
 /content-strategy  /  301
 
 # Legacy slug
-/senior-security-hub/best-identity-protection-2025  /pages/senior-security-hub/best-identity-protection-2026.html  301
-/contact  /pages/about.html  301
+/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2026  301
+/contact  /about  301
 
-# SEO clean URLs
+# SEO clean URLs (200 rewrites — serve file without redirect)
 /i-got-scammed  /pages/i-got-scammed.html  200
-/got-scammed  /pages/i-got-scammed.html  301
-/i-just-got-scammed  /pages/i-got-scammed.html  301
-/just-got-scammed  /pages/i-got-scammed.html  301
+/got-scammed  /i-got-scammed  301
+/i-just-got-scammed  /i-got-scammed  301
+/just-got-scammed  /i-got-scammed  301
 
-/resources/essential-tools /resources 301
+/resources/essential-tools  /resources  301
+
+# ============================================================
+# CANONICAL FIX: Redirect /pages/* paths to clean canonical URLs
+# Eliminates "Alternate page with proper canonical tag" GSC issue
+# ============================================================
+
+# Learning Center (54 pages)
+/pages/learning-center/account-takeover-prevention  /learning-center/account-takeover-prevention  301
+/pages/learning-center/ai-powered-scams-guide-2025  /learning-center/ai-powered-scams-guide-2025  301
+/pages/learning-center/ai-scams-personal-data-already-out-there  /learning-center/ai-scams-personal-data-already-out-there  301
+/pages/learning-center/ai-voice-cloning-fraud  /learning-center/ai-voice-cloning-fraud  301
+/pages/learning-center/aura-identity-theft-protection-review  /learning-center/aura-identity-theft-protection-review  301
+/pages/learning-center/business-email-compromise-scam-explained  /learning-center/business-email-compromise-scam-explained  301
+/pages/learning-center/business-security-essentials  /learning-center/business-security-essentials  301
+/pages/learning-center/case-study-business-email-compromise  /learning-center/case-study-business-email-compromise  301
+/pages/learning-center/case-study-crypto-guru-investment-scam  /learning-center/case-study-crypto-guru-investment-scam  301
+/pages/learning-center/case-study-urgent-bank-email-phishing-attack  /learning-center/case-study-urgent-bank-email-phishing-attack  301
+/pages/learning-center/child-identity-theft-protection  /learning-center/child-identity-theft-protection  301
+/pages/learning-center/credit-card-fraud-protection  /learning-center/credit-card-fraud-protection  301
+/pages/learning-center/crypto-com-review-and-referral  /learning-center/crypto-com-review-and-referral  301
+/pages/learning-center/crypto-recovery-steps  /learning-center/crypto-recovery-steps  301
+/pages/learning-center/cryptocurrency-investment-scam-guide  /learning-center/cryptocurrency-investment-scam-guide  301
+/pages/learning-center/data-breach-response  /learning-center/data-breach-response  301
+/pages/learning-center/deep-dive-grandparent-scam-protection  /learning-center/deep-dive-grandparent-scam-protection  301
+/pages/learning-center/deep-dive-investment-scams  /learning-center/deep-dive-investment-scams  301
+/pages/learning-center/deep-dive-phishing-and-smishing-scams  /learning-center/deep-dive-phishing-and-smishing-scams  301
+/pages/learning-center/deep-dive-romance-scams  /learning-center/deep-dive-romance-scams  301
+/pages/learning-center/deep-dive-tech-support-scams  /learning-center/deep-dive-tech-support-scams  301
+/pages/learning-center/doj-strike-force-scam-compounds  /learning-center/doj-strike-force-scam-compounds  301
+/pages/learning-center/emerging-threats-2026  /learning-center/emerging-threats-2026  301
+/pages/learning-center/fake-online-gambling-sites-how-to-spot-them  /learning-center/fake-online-gambling-sites-how-to-spot-them  301
+/pages/learning-center/fake-tech-support-scam  /learning-center/fake-tech-support-scam  301
+/pages/learning-center/fraud-alert-common-scams-targeting-seniors  /learning-center/fraud-alert-common-scams-targeting-seniors  301
+/pages/learning-center/fraud-alert-identity-protection-after-a-scam  /learning-center/fraud-alert-identity-protection-after-a-scam  301
+/pages/learning-center/grandparent-emergency-scam  /learning-center/grandparent-emergency-scam  301
+/pages/learning-center/hello-text-trap  /learning-center/hello-text-trap  301
+/pages/learning-center/identity-theft-insurance-vs-protection  /learning-center/identity-theft-insurance-vs-protection  301
+/pages/learning-center/identity-theft-warning-signs  /learning-center/identity-theft-warning-signs  301
+/pages/learning-center/index  /learning-center  301
+/pages/learning-center/job-scam-product-reviewer-explained  /learning-center/job-scam-product-reviewer-explained  301
+/pages/learning-center/just-got-scammed-guide-ca-us  /learning-center/just-got-scammed-guide-ca-us  301
+/pages/learning-center/ledger-wallet-review-is-it-the-safest-crypto-hardware-wallet  /learning-center/ledger-wallet-review-is-it-the-safest-crypto-hardware-wallet  301
+/pages/learning-center/lottery-and-sweepstakes-scams-unmasked  /learning-center/lottery-and-sweepstakes-scams-unmasked  301
+/pages/learning-center/marketplace-car-scam  /learning-center/marketplace-car-scam  301
+/pages/learning-center/medical-identity-theft-protection  /learning-center/medical-identity-theft-protection  301
+/pages/learning-center/meta-scam-ads-exposed  /learning-center/meta-scam-ads-exposed  301
+/pages/learning-center/online-safety-for-seniors  /learning-center/online-safety-for-seniors  301
+/pages/learning-center/pig-butchering-scam-investigation-2025  /learning-center/pig-butchering-scam-investigation-2025  301
+/pages/learning-center/protecting-your-family-online  /learning-center/protecting-your-family-online  301
+/pages/learning-center/senior-identity-theft-prevention  /learning-center/senior-identity-theft-prevention  301
+/pages/learning-center/seniors-cyber-fraud-guide-us-canada-2025  /learning-center/seniors-cyber-fraud-guide-us-canada-2025  301
+/pages/learning-center/social-security-number-theft  /learning-center/social-security-number-theft  301
+/pages/learning-center/speed-camera-ticket-scam-text-message  /learning-center/speed-camera-ticket-scam-text-message  301
+/pages/learning-center/spotting-red-flags-scam-recovery  /learning-center/spotting-red-flags-scam-recovery  301
+/pages/learning-center/ssn-stolen-data-breach-what-to-do  /learning-center/ssn-stolen-data-breach-what-to-do  301
+/pages/learning-center/synthetic-identity-fraud  /learning-center/synthetic-identity-fraud  301
+/pages/learning-center/threat-briefing-the-human-firewall  /learning-center/threat-briefing-the-human-firewall  301
+/pages/learning-center/tool-analysis-password-managers  /learning-center/tool-analysis-password-managers  301
+/pages/learning-center/tool-analysis-top-vpns-for-crypto-trading  /learning-center/tool-analysis-top-vpns-for-crypto-trading  301
+/pages/learning-center/trezor-wallet-review-the-original-open-source-crypto-fortress  /learning-center/trezor-wallet-review-the-original-open-source-crypto-fortress  301
+/pages/learning-center/ultimate-online-safety-guide-for-seniors  /learning-center/ultimate-online-safety-guide-for-seniors  301
+
+# Senior Security Hub (12 pages)
+/pages/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2025  301
+/pages/senior-security-hub/best-identity-protection-2026  /senior-security-hub/best-identity-protection-2026  301
+/pages/senior-security-hub/credit-monitoring-for-seniors  /senior-security-hub/credit-monitoring-for-seniors  301
+/pages/senior-security-hub/family-protection-plans  /senior-security-hub/family-protection-plans  301
+/pages/senior-security-hub/how-to-report-identity-theft  /senior-security-hub/how-to-report-identity-theft  301
+/pages/senior-security-hub/identity-protection-reviews  /senior-security-hub/identity-protection-reviews  301
+/pages/senior-security-hub/index  /senior-security-hub  301
+/pages/senior-security-hub/local-protection  /senior-security-hub/local-protection  301
+/pages/senior-security-hub/medicare-fraud-protection  /senior-security-hub/medicare-fraud-protection  301
+/pages/senior-security-hub/resource-library  /senior-security-hub/resource-library  301
+/pages/senior-security-hub/senior-online-safety  /senior-security-hub/senior-online-safety  301
+/pages/senior-security-hub/senior-scam-prevention  /senior-security-hub/senior-scam-prevention  301
+
+# Resources (3 pages)
+/pages/resources/crypto-safety  /resources/crypto-safety  301
+/pages/resources/essential-tools  /resources  301
+/pages/resources/index  /resources  301
+
+# Single /pages/ files
+/pages/about  /about  301
+/pages/affiliate-disclosure  /affiliate-disclosure  301
+/pages/cookie-policy  /cookie-policy  301
+/pages/crypto-scam-victim-support  /crypto-scam-victim-support  301
+/pages/i-got-scammed  /i-got-scammed  301
+/pages/privacy-policy  /privacy-policy  301
+/pages/terms-and-conditions  /terms-and-conditions  301
+/pages/victim-support  /victim-support  301
