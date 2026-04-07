@@ -2,6 +2,20 @@
 http://armidillo.com/*  https://www.armidillo.com/:splat  301
 http://www.armidillo.com/*  https://www.armidillo.com/:splat  301
 https://armidillo.com/*  https://www.armidillo.com/:splat  301
+# .html file redirects — prevent "Page with redirect" GSC issue
+/index.html  /  301
+/pages/about.html  /about  301
+/pages/affiliate-disclosure.html  /affiliate-disclosure  301
+/pages/cookie-policy.html  /cookie-policy  301
+/pages/crypto-scam-victim-support.html  /crypto-scam-victim-support  301
+/pages/i-got-scammed.html  /i-got-scammed  301
+/pages/privacy-policy.html  /privacy-policy  301
+/pages/terms-and-conditions.html  /terms-and-conditions  301
+/pages/victim-support.html  /victim-support  301
+# Clean URL rewrites for learning-center, senior-security-hub, resources
+/learning-center/*  /pages/learning-center/:splat  200
+/senior-security-hub/*  /pages/senior-security-hub/:splat  200
+/resources/*  /pages/resources/:splat  200
 
 # Removed pages → logical destinations
 /subscribe  /  301
