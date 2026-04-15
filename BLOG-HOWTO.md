@@ -39,7 +39,7 @@ This guide is for non-developers. You don't need to know how to code to publish 
 
 ### 2c. Update the canonical URL
 ```html
-<link rel="canonical" href="https://www.armidillo.com/learning-center/your-article-slug">
+<link rel="canonical" href="https://armidillo.com/learning-center/your-article-slug">
 ```
 > The "slug" is the URL-safe version of your title: all lowercase, words separated by hyphens, no special characters.
 > Example: "How to Spot Fake Emails" → `how-to-spot-fake-emails`
@@ -150,7 +150,7 @@ Cloudflare Pages will automatically deploy within 2-3 minutes.
 
 ```xml
   <url>
-    <loc>https://www.armidillo.com/learning-center/your-article-slug</loc>
+    <loc>https://armidillo.com/learning-center/your-article-slug</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

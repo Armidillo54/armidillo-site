@@ -1,7 +1,13 @@
-# Canonical HTTPS/www redirects
-http://armidillo.com/*  https://www.armidillo.com/:splat  301
-http://www.armidillo.com/*  https://www.armidillo.com/:splat  301
-https://armidillo.com/*  https://www.armidillo.com/:splat  301
+# Canonical HTTPS / non-www redirects
+http://armidillo.com/*  https://armidillo.com/:splat  301
+http://www.armidillo.com/*  https://armidillo.com/:splat  301
+https://www.armidillo.com/*  https://armidillo.com/:splat  301
+
+# Chain-flatteners: collapse host + /pages/ in a single 301 for the most-linked subtrees
+https://www.armidillo.com/pages/learning-center/*  https://armidillo.com/learning-center/:splat  301
+https://www.armidillo.com/pages/senior-security-hub/*  https://armidillo.com/senior-security-hub/:splat  301
+https://www.armidillo.com/pages/resources/*  https://armidillo.com/resources/:splat  301
+
 # .html file redirects — prevent "Page with redirect" GSC issue
 /index.html  /  301
 /pages/about.html  /about  301
@@ -12,12 +18,30 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /pages/privacy-policy.html  /privacy-policy  301
 /pages/terms-and-conditions.html  /terms-and-conditions  301
 /pages/victim-support.html  /victim-support  301
+
+# ============================================================
+# IMPORTANT: These specific 301s must come BEFORE the /*  200 rewrites below
+# (Cloudflare _redirects uses first-match-wins semantics)
+# ============================================================
+
+# Soft-404 remediation: thin "coming soon" stubs redirect to the hub
+/senior-security-hub/local-protection  /senior-security-hub  301
+/senior-security-hub/resource-library  /senior-security-hub  301
+
+# Legacy slug — direct redirect to 2026 version (chain-flattened)
+/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2026  301
+
+# Duplicate content consolidation
+/learning-center/nordvpn-review-secure-online-privacy  /learning-center/nordvpn-review-online-privacy  301
+/learning-center/spot-grandparent-scams-seniors  /learning-center/deep-dive-grandparent-scam-protection  301
+/learning-center/protect-seniors-romance-scams  /learning-center/deep-dive-romance-scams  301
+
 # Clean URL rewrites for learning-center, senior-security-hub, resources
 /learning-center/*  /pages/learning-center/:splat  200
 /senior-security-hub/*  /pages/senior-security-hub/:splat  200
 /resources/*  /pages/resources/:splat  200
 
-# Removed pages → logical destinations
+# Removed / deprecated pages → logical destinations
 /subscribe  /  301
 /scam-assessment  /victim-support  301
 /glossary  /learning-center  301
@@ -25,9 +49,6 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /home-security-hub  /  301
 /home-security-hub/*  /  301
 /content-strategy  /  301
-
-# Legacy slug
-/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2026  301
 /contact  /about  301
 
 # SEO clean URLs
@@ -44,7 +65,7 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 # Eliminates "Alternate page with proper canonical tag" GSC issue
 # ============================================================
 
-# Learning Center (54 pages)
+# Learning Center
 /pages/learning-center/account-takeover-prevention  /learning-center/account-takeover-prevention  301
 /pages/learning-center/ai-powered-scams-guide-2025  /learning-center/ai-powered-scams-guide-2025  301
 /pages/learning-center/ai-scams-personal-data-already-out-there  /learning-center/ai-scams-personal-data-already-out-there  301
@@ -52,6 +73,8 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /pages/learning-center/aura-identity-theft-protection-review  /learning-center/aura-identity-theft-protection-review  301
 /pages/learning-center/business-email-compromise-scam-explained  /learning-center/business-email-compromise-scam-explained  301
 /pages/learning-center/business-security-essentials  /learning-center/business-security-essentials  301
+/pages/learning-center/canada-fraud-prevention-month-2026  /learning-center/canada-fraud-prevention-month-2026  301
+/pages/learning-center/canada-national-anti-fraud-strategy-2026  /learning-center/canada-national-anti-fraud-strategy-2026  301
 /pages/learning-center/case-study-business-email-compromise  /learning-center/case-study-business-email-compromise  301
 /pages/learning-center/case-study-crypto-guru-investment-scam  /learning-center/case-study-crypto-guru-investment-scam  301
 /pages/learning-center/case-study-urgent-bank-email-phishing-attack  /learning-center/case-study-urgent-bank-email-phishing-attack  301
@@ -80,17 +103,24 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /pages/learning-center/job-scam-product-reviewer-explained  /learning-center/job-scam-product-reviewer-explained  301
 /pages/learning-center/just-got-scammed-guide-ca-us  /learning-center/just-got-scammed-guide-ca-us  301
 /pages/learning-center/ledger-wallet-review-is-it-the-safest-crypto-hardware-wallet  /learning-center/ledger-wallet-review-is-it-the-safest-crypto-hardware-wallet  301
+/pages/learning-center/lexisnexis-data-breach-2026-what-to-do  /learning-center/lexisnexis-data-breach-2026-what-to-do  301
 /pages/learning-center/lottery-and-sweepstakes-scams-unmasked  /learning-center/lottery-and-sweepstakes-scams-unmasked  301
 /pages/learning-center/marketplace-car-scam  /learning-center/marketplace-car-scam  301
 /pages/learning-center/medical-identity-theft-protection  /learning-center/medical-identity-theft-protection  301
 /pages/learning-center/meta-scam-ads-exposed  /learning-center/meta-scam-ads-exposed  301
+/pages/learning-center/nordvpn-review-online-privacy  /learning-center/nordvpn-review-online-privacy  301
+# Duplicate → collapsed directly to canonical destination (chain-flattened)
+/pages/learning-center/nordvpn-review-secure-online-privacy  /learning-center/nordvpn-review-online-privacy  301
 /pages/learning-center/online-safety-for-seniors  /learning-center/online-safety-for-seniors  301
 /pages/learning-center/pig-butchering-scam-investigation-2025  /learning-center/pig-butchering-scam-investigation-2025  301
+/pages/learning-center/protect-seniors-romance-scams  /learning-center/deep-dive-romance-scams  301
 /pages/learning-center/protecting-your-family-online  /learning-center/protecting-your-family-online  301
 /pages/learning-center/senior-identity-theft-prevention  /learning-center/senior-identity-theft-prevention  301
 /pages/learning-center/seniors-cyber-fraud-guide-us-canada-2025  /learning-center/seniors-cyber-fraud-guide-us-canada-2025  301
+/pages/learning-center/social-security-email-scam-2026  /learning-center/social-security-email-scam-2026  301
 /pages/learning-center/social-security-number-theft  /learning-center/social-security-number-theft  301
 /pages/learning-center/speed-camera-ticket-scam-text-message  /learning-center/speed-camera-ticket-scam-text-message  301
+/pages/learning-center/spot-grandparent-scams-seniors  /learning-center/deep-dive-grandparent-scam-protection  301
 /pages/learning-center/spotting-red-flags-scam-recovery  /learning-center/spotting-red-flags-scam-recovery  301
 /pages/learning-center/ssn-stolen-data-breach-what-to-do  /learning-center/ssn-stolen-data-breach-what-to-do  301
 /pages/learning-center/synthetic-identity-fraud  /learning-center/synthetic-identity-fraud  301
@@ -100,21 +130,23 @@ https://armidillo.com/*  https://www.armidillo.com/:splat  301
 /pages/learning-center/trezor-wallet-review-the-original-open-source-crypto-fortress  /learning-center/trezor-wallet-review-the-original-open-source-crypto-fortress  301
 /pages/learning-center/ultimate-online-safety-guide-for-seniors  /learning-center/ultimate-online-safety-guide-for-seniors  301
 
-# Senior Security Hub (12 pages)
-/pages/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2025  301
+# Senior Security Hub
+# Legacy 2025 slug — flattened directly to 2026 (no more A->B->C chain)
+/pages/senior-security-hub/best-identity-protection-2025  /senior-security-hub/best-identity-protection-2026  301
 /pages/senior-security-hub/best-identity-protection-2026  /senior-security-hub/best-identity-protection-2026  301
 /pages/senior-security-hub/credit-monitoring-for-seniors  /senior-security-hub/credit-monitoring-for-seniors  301
 /pages/senior-security-hub/family-protection-plans  /senior-security-hub/family-protection-plans  301
 /pages/senior-security-hub/how-to-report-identity-theft  /senior-security-hub/how-to-report-identity-theft  301
 /pages/senior-security-hub/identity-protection-reviews  /senior-security-hub/identity-protection-reviews  301
 /pages/senior-security-hub/index  /senior-security-hub  301
-/pages/senior-security-hub/local-protection  /senior-security-hub/local-protection  301
+# Soft-404 pages — flattened directly to hub
+/pages/senior-security-hub/local-protection  /senior-security-hub  301
 /pages/senior-security-hub/medicare-fraud-protection  /senior-security-hub/medicare-fraud-protection  301
-/pages/senior-security-hub/resource-library  /senior-security-hub/resource-library  301
+/pages/senior-security-hub/resource-library  /senior-security-hub  301
 /pages/senior-security-hub/senior-online-safety  /senior-security-hub/senior-online-safety  301
 /pages/senior-security-hub/senior-scam-prevention  /senior-security-hub/senior-scam-prevention  301
 
-# Resources (3 pages)
+# Resources
 /pages/resources/crypto-safety  /resources/crypto-safety  301
 /pages/resources/essential-tools  /resources  301
 /pages/resources/index  /resources  301
