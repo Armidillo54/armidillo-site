@@ -20,3 +20,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: c9f91129323d8a3a030f65b44f19c3f5
           command: pages deploy . --project-name=armidillo-site --branch=main
+
+      - name: Notify IndexNow (Bing / Yandex)
+        run: node scripts/indexnow-submit.mjs
+        continue-on-error: true
